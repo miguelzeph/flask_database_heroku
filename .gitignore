@@ -2,4 +2,4 @@
 /env/
 
 #Cache
-/__pycache__/
+/flaskblog/__pycache__/
