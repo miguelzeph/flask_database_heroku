@@ -1,11 +1,25 @@
 from flaskblog import app
-from flask import render_template
+from flask import render_template, flash
+
+from flaskblog.forms import RegistrationForm, LoginForm
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+
+    posts = [
+        {"title":'First Content','description':'Firts Description'},
+        {"title":'Second Content','description':'Second Description'}
+    ]
+    return render_template('index.html',posts =posts)
 
 @app.route('/about')
 def about():
-    title = 'About'
-    return render_template('about.html',title=title)
+    
+    return render_template('about.html',title='About')
+
+@app.route('/register',methods=['GET','POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+       flash(f'User Created','sucess') 
+    return render_template('register.html',title='Register', form=form)

@@ -1,0 +1,42 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<form method='POST' style = 'width:60%;' class = 'mx-auto'>
+
+    {{form.hidden_tag()}}
+    <h1 class = 'text-center'>Create an Account</h1>
+
+    <!-- Username-->
+    <div>
+        {{form.username.label}}
+
+        {%if form.username.errors%}
+            {{form.username(class='form-control is-invalid')}}
+            <div class = 'invalid-feedback'>
+                {%for error in form.username.errors%}
+                <span>{{error}}</span>
+                {%endfor%}
+            </div>
+        {%else%}
+            {{form.username(class='form-control')}}
+        {%endif%}
+
+    </div>
+    <!-- Email-->
+    <div>
+        {{form.email.label}}
+        {{form.email(class='form-control')}}
+    </div>
+    <!-- Confirm_Password-->
+    <div>
+        {{form.confirm_password.label}}
+        {{form.confirm_password(class='form-control')}}
+    </div>
+    <br>
+    <div>
+        {{form.submit(class='btn btn-outline-info')}}
+    </div>
+</form>
+
+{%endblock%}

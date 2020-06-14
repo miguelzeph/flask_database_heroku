@@ -2,6 +2,12 @@
 
 {%block content%}
 
-<h1 class = 'container'>Home Page</h1>
+
+{%for post in posts%}
+    
+        <h1>{{post.title}}</h1>
+        <p>{{post.description}}</p>
+{%endfor%}
+
 
 {%endblock%}
