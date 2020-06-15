@@ -30,17 +30,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{url_for('index')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="{{url_for('about')}}">About</a>
             </li> 
+            {%if current_user.is_authenticated%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                </li> 
+            {%else%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('register')}}">Register</a>
+                </li> 
+            {%endif%}
+            
         </div>
         </div>
     </nav>
 
     <!--Jogada boa essa com a DIV-->
-    <div class = 'container'>
+    <div class = 'container mt-5'>
+    
+    {%with messages = get_flashed_messages(with_categories=true)%}
+        {%for category, message in messages%}
+            <div class="alert alert-{{category}}">
+                {{message}} 
+            </div>
+        {%endfor%}
+    {%endwith%}
 
     {%block content%}
     {%endblock%}

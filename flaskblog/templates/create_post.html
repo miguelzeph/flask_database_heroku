@@ -1,0 +1,50 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<form method='POST' style = 'width:60%;' class = 'mx-auto'>
+
+    {{form.hidden_tag()}}
+    <h1 class = 'text-center'>Add Post</h1>
+
+    
+    <!--Title-->
+    <div>
+        {{form.title.label}}
+
+        {%if form.title.errors%}
+            {{form.title(class='form-control is-invalid')}}
+            <div class = 'invalid-feedback'>
+                {%for error in form.title.errors%}
+                <span>{{error}}</span>
+                {%endfor%}
+            </div>
+        {%else%}
+            {{form.title(class='form-control')}}
+        {%endif%}
+    </div>
+
+    <!--description-->
+    <div>
+        {{form.description.label}}
+
+        {%if form.description.errors%}
+            {{form.description(class='form-control is-invalid')}}
+            <div class = 'invalid-feedback'>
+                {%for error in form.description.errors%}
+                <span>{{error}}</span>
+                {%endfor%}
+            </div>
+        {%else%}
+            {{form.description(class='form-control')}}
+        {%endif%}
+    </div>
+
+    
+    <br>
+    <div>
+        {{form.submit(class='btn btn-outline-info')}}
+    </div>
+</form>
+
+{%endblock%}
