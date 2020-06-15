@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_login import LoginManager
-
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY']=os.environ.get("SECRET_KEY") # Está no HEROKU
