@@ -13,6 +13,8 @@ db = SQLAlchemy(app)
 ###############################################
 bcrypt = Bcrypt(app)# Criptografia Senha
 login_manager = LoginManager(app) # Login Manager
+login_manager.login_view='login'# nome VIEW FUNCTION
+login_manager.login_message_category='info' #Bootstrap, ex: alert, success...
 
 
 

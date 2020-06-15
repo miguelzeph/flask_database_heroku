@@ -27,6 +27,6 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
 class PostForm(FlaskForm):
-    title = StringField('Title',validators=[DataRequired(),Email()])
+    title = StringField('Title',validators=[DataRequired()])
     description = TextAreaField('Description',validators = [DataRequired()])
     submit = SubmitField('Post')
