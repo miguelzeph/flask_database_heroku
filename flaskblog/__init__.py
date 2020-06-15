@@ -3,11 +3,13 @@ from flask_login import LoginManager
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY']='mysecretkey'
+app.config['SECRET_KEY']=os.environ.get("SECRET_KEY") # Está no HEROKU
 ########### Data Base Config ##################
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+app.config['SQLALCHEMY_DATABASE_URI'] =os.environ.get("DATABASE_URL") # Foi criado pelo HEROKU
+#app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///database.db' #LOCAL
 db = SQLAlchemy(app)
 #OBS: Arquivo MODELS.PY vou criar as classes para o banco de dados
 ###############################################
